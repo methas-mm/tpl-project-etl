@@ -1,0 +1,169 @@
+{
+    "engine": {
+        "storage": {
+            "type": 3,
+            "properties": {
+                "endpoint": "http://minio.data-driven-minio.svc.cluster.local:9000",
+                "accessKey": "user",
+                "secretKey": "BnHAsLcpnDeW9yjm",
+                "bucketName": "datadd/datadd-tpl/data"
+            }
+        },
+        "tmpPath": "/home/jovyan/tmp/",
+        "isDedicatedSpark": false,
+        "sparkExecutorCore": 1,
+        "sparkExecutorMemory": "1g",
+        "sparkEndpoint": "spark://spark-master-svc.data-driven-spark.svc.cluster.local:7077",
+        "isDynamicAlloation": true,
+        "sparkExecutorMinInstances": 2,
+        "sparkExecutorMaxInstances": 5
+    },
+    "app": {
+        "name": "app-poc-1819_%s%s",
+        "suffix": "_tpl",
+        "execution": {
+            "inputPath": "./app.ipynb",
+            "outputPath": "output_%s%s.ipynb"
+        },
+        "datas": {
+            "diamond": {
+                "src": {
+                    "type": 1,
+                    "properties": {
+                        "storage": "diamond",
+                        "type": "csv",
+                        "path": "diamonds-part1.csv"
+                    }
+                },
+                "dest": {
+                    "type": 2,
+                    "properties": {
+                        "storage": "engine",
+                        "table": "bronze/DIAMONDS_RAW"
+                    }
+                }
+            },
+            "currentOpenWeather": {
+                "src": {
+                    "type": 3,
+                    "properties": {
+                        "storage": "openWeather",
+                        "path": "onecall",
+                        "method": "get",
+                        "parameters": {
+                            "lat": 13.736717,
+                            "lon": 100.523186,
+                            "appId": "4a6f04d289b2df7a6ac83cd3109d5304",
+                            "exclude": "current,minutely,hourly,alerts",
+                            "units": "metric"
+                        }
+                    }
+                },
+                "dest": {
+                    "type": 2,
+                    "properties": {
+                        "storage": "engine",
+                        "table": "bronze/WEATHER_CURRENT_RAW"
+                    }
+                }
+            },
+            "currentOpenWeatherMongoDB": {
+                "src": {
+                    "type": 3,
+                    "properties": {
+                        "storage": "openWeather",
+                        "path": "onecall",
+                        "method": "get",
+                        "parameters": {
+                            "lat": 13.736717,
+                            "lon": 100.523186,
+                            "appId": "4a6f04d289b2df7a6ac83cd3109d5304",
+                            "exclude": "current,minutely,hourly,alerts",
+                            "units": "metric"
+                        }
+                    }
+                },
+                "dest": {
+                    "type": 2,
+                    "properties": {
+                        "storage": "mongoDb",
+                        "table": "weather_currents"
+                    }
+                }
+            },
+            "cxenseExport": {
+                "src": {
+                    "type": 2,
+                    "properties": {
+                        "storage": "cxenseViewThru",
+                        "table": "silver/product_interest_custom_parameter"
+                    }
+                },
+                "dest": {
+                    "type": 2,
+                    "properties": {
+                        "storage": "azureBlobStorage",
+                        "table": "data/product-interest-custom-parameter"
+                    }
+                }
+            }
+        },
+        "storages": {
+            "diamond": {
+                "type": 3,
+                "properties": {
+                    "endpoint": "http://minio.data-driven-minio.svc.cluster.local:9000",
+                    "accessKey": "user",
+                    "secretKey": "BnHAsLcpnDeW9yjm",
+                    "bucketName": "datadd/datadd-tpl/input/"
+                }
+            },
+            "openWeather": {
+                "type": 6,
+                "properties": {
+                    "endpoint": "https://api.openweathermap.org",
+                    "path": "/data/2.5/",
+                    "headers": {}
+                }
+            },
+            "cxenseEvents": {
+                "type": 6,
+                "properties": {
+                    "endpoint": "https://api.cxense.com",
+                    "path": "/dmp/traffic/",
+                    "headers": {}
+                }
+            },
+            "cxenseViewThru": {
+                "type": 3,
+                "properties": {
+                    "endpoint": "http://minio.data-driven-minio.svc.cluster.local:9000",
+                    "accessKey": "user",
+                    "secretKey": "BnHAsLcpnDeW9yjm",
+                    "bucketName": "than-view-thru/data"
+                }
+            },
+            "mongoDb": {
+                "type": 7,
+                "properties": {
+                    "uri": "mongodb://admin:869U1ERA9XWhKRoi@mongodb-0.mongodb-headless.data-driven-mongodb.svc.cluster.local:27017,mongodb-1.mongodb-headless.data-driven-mongodb.svc.cluster.local:27017/DATA_DRIVEN_ENGINE_DEV?authSource=DATA_DRIVEN_ENGINE_DEV&replicaSet=rs0",
+                    "db": "DATA_DRIVEN_ENGINE_DEV"
+                }
+            },
+            "azureBlobStorage": {
+                "type": 8,
+                "properties": {
+                    "endpoint": "wasbs://than-view-thru-external@azstgdrivenstorage.blob.core.windows.net",
+                    "path": ""
+                }
+            },
+            "azureAdslGen2Storage": {
+                "type": 8,
+                "properties": {
+                    "endpoint": "abfss://than-view-thru-external@mimotechsandpocdatalake.dfs.core.windows.net",
+                    "path": ""
+                }
+            }
+        }
+    }
+}

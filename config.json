@@ -1,0 +1,31 @@
+{
+    "engine": {
+        "storage": {
+            "type": 3,
+            "properties": {
+                "endpoint": "http://dd14-minio.data-driven-dd14.svc.cluster.local:9000",
+                "accessKey": "user",
+                "secretKey": "",
+                "bucketName": "datadd/datadd-tpl/data"
+            }
+        },
+        "tmpPath": "/home/jovyan/tmp/",
+        "isDedicatedSpark": false,
+        "sparkExecutorCore": 1,
+        "sparkExecutorMemory": "1g",
+        "sparkEndpoint": "spark://spark-master-svc.data-driven-30.svc.cluster.local:7077",
+        "isDynamicAllocation": true,
+        "sparkExecutorMinInstances": 2,
+        "sparkExecutorMaxInstances": 5
+    },
+    "app": {
+        "name": "app_%s%s",
+        "suffix": "_tpl",
+        "execution": {
+            "inputPath": "./app.ipynb",
+            "outputPath": "output_%s%s.ipynb"
+        },
+        "datas": {},
+        "storages": {}
+    }
+}

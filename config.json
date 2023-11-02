@@ -3,7 +3,7 @@
         "storage": {
             "type": 3,
             "properties": {
-                "endpoint": "http://dd14-minio.data-driven-dd14.svc.cluster.local:9000",
+                "endpoint": "",
                 "accessKey": "user",
                 "secretKey": "",
                 "bucketName": "datadd/datadd-tpl/data"
@@ -13,7 +13,7 @@
         "isDedicatedSpark": false,
         "sparkExecutorCore": 1,
         "sparkExecutorMemory": "1g",
-        "sparkEndpoint": "spark://spark-master-svc.data-driven-30.svc.cluster.local:7077",
+        "sparkEndpoint": "",
         "isDynamicAllocation": true,
         "sparkExecutorMinInstances": 2,
         "sparkExecutorMaxInstances": 5

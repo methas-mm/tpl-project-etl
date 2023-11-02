@@ -3,9 +3,9 @@
         "storage": {
             "type": 3,
             "properties": {
-                "endpoint": "http://minio.data-driven-minio.svc.cluster.local:9000",
-                "accessKey": "user",
-                "secretKey": "BnHAsLcpnDeW9yjm",
+                "endpoint": "",
+                "accessKey": "",
+                "secretKey": "",
                 "bucketName": "datadd/datadd-tpl/data"
             }
         },
@@ -13,7 +13,7 @@
         "isDedicatedSpark": false,
         "sparkExecutorCore": 1,
         "sparkExecutorMemory": "1g",
-        "sparkEndpoint": "spark://spark-master-svc.data-driven-spark.svc.cluster.local:7077",
+        "sparkEndpoint": "",
         "isDynamicAlloation": true,
         "sparkExecutorMinInstances": 2,
         "sparkExecutorMaxInstances": 5
@@ -112,9 +112,9 @@
             "diamond": {
                 "type": 3,
                 "properties": {
-                    "endpoint": "http://minio.data-driven-minio.svc.cluster.local:9000",
-                    "accessKey": "user",
-                    "secretKey": "BnHAsLcpnDeW9yjm",
+                    "endpoint": "",
+                    "accessKey": "",
+                    "secretKey": "",
                     "bucketName": "datadd/datadd-tpl/input/"
                 }
             },
@@ -137,7 +137,7 @@
             "cxenseViewThru": {
                 "type": 3,
                 "properties": {
-                    "endpoint": "http://minio.data-driven-minio.svc.cluster.local:9000",
+                    "endpoint": "",
                     "accessKey": "user",
                     "secretKey": "BnHAsLcpnDeW9yjm",
                     "bucketName": "than-view-thru/data"
@@ -146,21 +146,21 @@
             "mongoDb": {
                 "type": 7,
                 "properties": {
-                    "uri": "mongodb://admin:869U1ERA9XWhKRoi@mongodb-0.mongodb-headless.data-driven-mongodb.svc.cluster.local:27017,mongodb-1.mongodb-headless.data-driven-mongodb.svc.cluster.local:27017/DATA_DRIVEN_ENGINE_DEV?authSource=DATA_DRIVEN_ENGINE_DEV&replicaSet=rs0",
+                    "uri": "",
                     "db": "DATA_DRIVEN_ENGINE_DEV"
                 }
             },
             "azureBlobStorage": {
                 "type": 8,
                 "properties": {
-                    "endpoint": "wasbs://than-view-thru-external@azstgdrivenstorage.blob.core.windows.net",
+                    "endpoint": "",
                     "path": ""
                 }
             },
             "azureAdslGen2Storage": {
                 "type": 8,
                 "properties": {
-                    "endpoint": "abfss://than-view-thru-external@mimotechsandpocdatalake.dfs.core.windows.net",
+                    "endpoint": "",
                     "path": ""
                 }
             }
